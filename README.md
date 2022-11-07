@@ -59,3 +59,5 @@ al crear una issue: en la ventana de la issue -> projects -> status: todo, y est
 git checkout -b rama
 
 git push -u origin nombredelarama
+
+crear pull request base: main compare:nombredelarama con titulo de la incidencia y de comentario: closes # (seleccionar incidencia))
