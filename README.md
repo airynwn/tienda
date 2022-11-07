@@ -4,38 +4,6 @@ front office: portal de los clientes /index.php
 
 back office: portal de la administracion (CRUD) /admin/index.php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 projects -> crear nuevo proyecto -> board
 workflows -> items added to project -> quitar "issues" de when y activarlo
 item reopened -> ta bien, activar
@@ -57,3 +25,7 @@ al crear una issue: en la ventana de la issue -> projects -> status: todo, y est
 -- crear una rama para cada incidencia y situarse en ella:
 
 git checkout -b rama
+
+-- borrar rama
+
+git checkout -D rama
