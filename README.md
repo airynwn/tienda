@@ -53,3 +53,7 @@ project -> asignar issue al proyecto indicado
 milestone -> hitos. el proyecto hay tres hitos: abril, mayo y junio. es una estimacion que se hace al principio de cuando se va a tener hecho (v1, v2, v3). no se pone de momento, es mas para el tfg
 
 al crear una issue: en la ventana de la issue -> projects -> status: todo, y esto se ve en la ventana del proyecto
+
+-- crear una rama para cada incidencia y situarse en ella:
+
+git checkout -b rama
