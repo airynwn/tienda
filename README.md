@@ -29,3 +29,13 @@ git checkout -b rama
 -- borrar rama
 
 git checkout -D rama
+
+
+daw@alumno:~/Escritorio/tienda$ sudo -u postgres createuser -P tienda
+[sudo] contraseña para daw:
+could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
+Enter password for new role:
+Enter it again:
+daw@alumno:~/Escritorio/tienda$ sudo -u postgres createdb -O tienda tienda
+could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
+daw@alumno:~/Escritorio/tienda$ psql -h localhost -U tienda -d tienda < tienda.sql
