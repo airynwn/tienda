@@ -34,18 +34,34 @@ function insertar_error($campo, $mensaje, &$error)
     if (!isset($error[$campo])) {
         $error[$campo] = [];
     }
-    $error[campo][] = $mensaje;
+    $error[$campo][] = $mensaje;
 }
 
-functon validar_digitos($numero, $campo, &$error)
+function validar_digitos($dig, $campo, &$error)
 {
-    if (!ctype_digit($codigo)) {
+    if (!ctype_digit($dig)) {
         insertar_error($campo, 'Los caracteres no son válidos', $error);
     }
     return false;
 }
 
+function validar_longitud($cadena, $campo, $min, $max, &$error)
+{
+    $long = mb_strlen($cadena);
+
+    if ($long < $min || $long > $max) {
+        insertar_error(
+            $campo,
+            'La longitud del campo es incorrecta',
+            $error
+        );
+    }
+}
+
 function validar_codigo($codigo, &$error)
 {
-    
+    validar_longitud($codigo, 'codigo', 1, 13, $error);
+    if (!isset($error['codigo'])) {
+        // comprobar si existe ya un articulo con ese codigo
+    }
 }
