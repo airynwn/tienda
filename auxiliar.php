@@ -28,3 +28,24 @@ function hh($x)
 {
     return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
 }
+
+function insertar_error($campo, $mensaje, &$error)
+{
+    if (!isset($error[$campo])) {
+        $error[$campo] = [];
+    }
+    $error[campo][] = $mensaje;
+}
+
+functon validar_digitos($numero, $campo, &$error)
+{
+    if (!ctype_digit($codigo)) {
+        insertar_error($campo, 'Los caracteres no son válidos', $error);
+    }
+    return false;
+}
+
+function validar_codigo($codigo, &$error)
+{
+    
+}
