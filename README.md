@@ -25,23 +25,15 @@ al crear una issue: en la ventana de la issue -> projects -> status: todo, y est
 -- crear una rama para cada incidencia y situarse en ella:
 
 git checkout -b rama
-
-<<<<<<< HEAD
-git push -u origin nombredelarama
+git push -u origin nombredelarama (solo la primera vez)
 
 crear pull request base: main compare:nombredelarama con titulo de la incidencia y de comentario: closes # (seleccionar incidencia))
-=======
 -- borrar rama
 
 git checkout -D rama
 
+daw@alumno:/Escritorio/tienda$ sudo -u postgres createuser -P tienda [sudo] contraseña para daw: could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado Enter password for new role: Enter it again: daw@alumno:/Escritorio/tienda$ sudo -u postgres createdb -O tienda tienda could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado daw@alumno:~/Escritorio/tienda$ psql -h localhost -U tienda -d tienda < tienda.sql
 
-daw@alumno:~/Escritorio/tienda$ sudo -u postgres createuser -P tienda
-[sudo] contraseña para daw:
-could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
-Enter password for new role:
-Enter it again:
-daw@alumno:~/Escritorio/tienda$ sudo -u postgres createdb -O tienda tienda
-could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
-daw@alumno:~/Escritorio/tienda$ psql -h localhost -U tienda -d tienda < tienda.sql
->>>>>>> main
+-- pull request, merge
+git pull
+git merge main (desde la rama alternativa de trabajo)
