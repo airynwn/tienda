@@ -37,9 +37,9 @@
             <tbody>
                 <?php foreach ($sent as $fila): ?>
                 <tr>
-                    <td><?= $fila['codigo'] ?></td>
-                    <td><?= $fila['descripcion'] ?></td>
-                    <td><?= $fila['precio'] ?></td>
+                    <td><?= hh($fila['codigo']) ?></td>
+                    <td><?= hh($fila['descripcion']) ?></td>
+                    <td><?= hh($fila['precio']) ?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

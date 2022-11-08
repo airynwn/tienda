@@ -24,3 +24,7 @@ function obtener_post($par)
     return obtener_parametro($par, $_POST);
 }
 
+function hh($x)
+{
+    return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
+}
