@@ -4,38 +4,6 @@ front office: portal de los clientes /index.php
 
 back office: portal de la administracion (CRUD) /admin/index.php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 projects -> crear nuevo proyecto -> board
 workflows -> items added to project -> quitar "issues" de when y activarlo
 item reopened -> ta bien, activar
@@ -58,6 +26,22 @@ al crear una issue: en la ventana de la issue -> projects -> status: todo, y est
 
 git checkout -b rama
 
+<<<<<<< HEAD
 git push -u origin nombredelarama
 
 crear pull request base: main compare:nombredelarama con titulo de la incidencia y de comentario: closes # (seleccionar incidencia))
+=======
+-- borrar rama
+
+git checkout -D rama
+
+
+daw@alumno:~/Escritorio/tienda$ sudo -u postgres createuser -P tienda
+[sudo] contraseña para daw:
+could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
+Enter password for new role:
+Enter it again:
+daw@alumno:~/Escritorio/tienda$ sudo -u postgres createdb -O tienda tienda
+could not change directory to "/home/daw/Escritorio/tienda": Permiso denegado
+daw@alumno:~/Escritorio/tienda$ psql -h localhost -U tienda -d tienda < tienda.sql
+>>>>>>> main
