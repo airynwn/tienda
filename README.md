@@ -42,6 +42,7 @@ La idea es crear una rama para trabajar cada una de las incidencias y fusionarla
 - `git push -u origin rama` Envía los archivos locales al repositorio remoto. El `-u origin rama` sólo se pone la primera vez para cada rama para crearla en Github.
 - `git pull` Trae los archivos del repositorio remoto al local.
 - `git merge main` Desde la rama alternativa de trabajo, se usa para fusionarse con la rama principal para empezar trabajando con sus archivos.
+- `git checkout main README.md` Desde una rama alternativa, trae el README de la rama principal.
 - [CUIDADO] `git branch -D rama` Fuerza el borrado de la rama `rama`.
 
 ## Pull request
