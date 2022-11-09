@@ -5,6 +5,17 @@ La tienda gestiona un conjunto de artículos que disponen de un código único, 
 - **Back office** -> Portal de la administracion (CRUD). `/admin/index.php`
 
 - [x] Vista de artículos
+  - **Funciones auxiliares**
+    - [x] Conexión a la base de datos
+    - [x] Obtener parámetro (GET/POST)
+    - [x] Output escaping (htmlspecialchars)
+  - Index - **SQL**
+    - [x] GET de los parámetros a mostrar (excepto ID)
+    - [x] Conexión DB, transacción, bloqueo de tabla
+    - [x] Preparación y ejecución sentencia de selección
+  - Index - **Tabla HTML**
+    - [x] **Columnas**: Nombres de los campos de la tabla
+    - [x] **Filas**: Recorrer la sentencia de selección por cada columna (+ output escaping)
 - [ ] Insertar artículo
 - [ ] Borrar artículo
 - [ ] Modificar artículo
