@@ -1,8 +1,8 @@
 # Tienda online
 La tienda gestiona un conjunto de artículos que disponen de un código único, una descripción y un precio. Los artículos se pueden ver, insertar, borrar y modificar.
 
-- **Front office** --> Portal de los clientes. `/index.php`
-- **Back office** --> Portal de la administracion (CRUD). `/admin/index.php`
+- **Front office** -> Portal de los clientes. `/index.php`
+- **Back office** -> Portal de la administracion (CRUD). `/admin/index.php`
 
 - [x] Vista de artículos
 - [ ] Insertar artículo
@@ -18,7 +18,7 @@ La tienda gestiona un conjunto de artículos que disponen de un código único, 
    - `Items added to project` Quitar "issues" de when y activarlo. 
    - `Item reopened` Activar. 
    - No vamos a trabajar con peticiones, así que de momento no tocamos más.
-3. **Asociar proyecto**. `Projects` --> Add project.
+3. **Asociar proyecto**. `Projects` -> Add project.
 
 ## Issues
 Las incidencias son requisitos a implementar o problemas a resolver, es decir, algo que está por hacer. Al crear una nueva incidencia se usan las siguientes opciones:
@@ -26,10 +26,10 @@ Las incidencias son requisitos a implementar o problemas a resolver, es decir, a
 - **New issue**
   -  Título  (*borrar un artículo*).
   - Comentario (*el usuario podrá borrar un artículo desde el panel principal de administración*).
-- **Assignee** --> Asignar una issue a alguien (*a uno mismo*).
-- **Labels** --> Etiquetas (ej: *requisito funcional*). Se puede añadir título, descripción y color a las etiquetas creadas.
-- **Project** --> Asignar issue al proyecto indicado.
-- **Milestone** --> Hitos. En principio sólo se usarán en el proyecto final, en el cual hay tres hitos: abril, mayo y junio. Es una estimación que se hace al principio de cuándo se va a tener hecho (v1, v2, v3).
+- **Assignee** -> Asignar una issue a alguien (*a uno mismo*).
+- **Labels** -> Etiquetas (ej: *requisito funcional*). Se puede añadir título, descripción y color a las etiquetas creadas.
+- **Project** -> Asignar issue al proyecto indicado.
+- **Milestone** -> Hitos. En principio sólo se usarán en el proyecto final, en el cual hay tres hitos: abril, mayo y junio. Es una estimación que se hace al principio de cuándo se va a tener hecho (v1, v2, v3).
 
 Al crear una issue, entraremos en su página para cambiar `Status: Todo` en la sección `Projects`. Esto se verá reflejado en el board del proyecto.
 
