@@ -18,3 +18,11 @@
 // github.com/themesberg/flowbite -- flowbite.com
 // npm install -D flowbite
 // 
+
+// 11-11
+/*
+
+cd <public/js
+</ ln -s ../../node_modules/flowbite/dist flowbite
+
+*/

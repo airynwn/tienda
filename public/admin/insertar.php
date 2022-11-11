@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +16,9 @@
 
     $pdo = conectar();
     $error = [];
+    validar_codigo($codigo, $error);
+    validar_digitos($descripcion, 'descripcion', $error);
+    validar_longitud()
 
     // TODO
     // validar el codigo
