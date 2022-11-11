@@ -17,6 +17,7 @@
     $pdo = conectar();
     $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
     // en el link de añadir al carrito meter el id(?)
+    // carrito = variable de sesion
     ?>
 
 <div class="container mx-auto">
