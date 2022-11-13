@@ -13,7 +13,7 @@
     $codigo = obtener_post('codigo');
     $descripcion = obtener_post('descripcion');
     $precio = obtener_post('precio');
-
+    $test = "hola";
     $pdo = conectar();
     $error = [];
     validar_codigo($codigo, $error);
