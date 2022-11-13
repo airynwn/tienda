@@ -13,12 +13,11 @@
     $codigo = obtener_post('codigo');
     $descripcion = obtener_post('descripcion');
     $precio = obtener_post('precio');
-    $test = "hola";
     $pdo = conectar();
     $error = [];
     validar_codigo($codigo, $error);
     validar_digitos($descripcion, 'descripcion', $error);
-    validar_longitud()
+    //validar_longitud()
 
     // TODO
     // validar el codigo
