@@ -1,6 +1,7 @@
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,15 +16,16 @@
     </script>
     <title>Listado de artículos</title>
 </head>
+
 <body>
     <?php
-    require '../../src/auxiliar.php';
     require '../../src/admin-auxiliar.php';
+    require '../../src/auxiliar.php';
+
     $pdo = conectar();
     $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
-
     ?>
- <div class="container mx-auto">
+    <div class="container mx-auto">
         <?php if (isset($_SESSION['error'])) : ?>
             <div id="alert-error" class="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200" role="alert">
                 <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -115,7 +117,7 @@
             </div>
         </div>
     </div>
-    <a href="insertar.php">Insertar un nuevo artículo</a>
     <script src="/js/flowbite/flowbite.js"></script>
 </body>
+
 </html>
