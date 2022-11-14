@@ -1,4 +1,6 @@
 <?php
+
+require_once 'Carrito.php';
 // Funciones
 
 /**
@@ -29,6 +31,15 @@ function hh($x)
     return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
 }
 
+function volver() {
+    header("Location: /index.php");
+}
+
+function carrito() {
+    
+    return $_SESSION['carrito'];
+}
+
 function insertar_error($campo, $mensaje, &$error)
 {
     if (!isset($error[$campo])) {
@@ -36,6 +47,8 @@ function insertar_error($campo, $mensaje, &$error)
     }
     $error[$campo][] = $mensaje;
 }
+
+
 
 function validar_digitos($dig, $campo, &$error)
 {
