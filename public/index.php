@@ -15,7 +15,7 @@
     // require '../src/admin-auxiliar.php';
     require_once '../src/auxiliar.php';
 
-    $carrito = carrito();
+    $carrito = unserialize(carrito());
 
     $pdo = conectar();
     $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
