@@ -19,11 +19,20 @@ class Articulo
 
     public static function existe(int $id, ?PDO $pdo = null): bool
     {
-        // algo ?opcional
-        $pdo = $pdo ?? conectar(); //si hay pdo, pdo; sino, conectar
-        // coalescer, el primero que no sea nulo
-        $sent = $pdo->prepare('SELECT COUNT(*) FROM articulos WHERE id = :id');
-        $sent->execute([':id' => $id]); // true si es distinto de 0 aka existe
-        return $sent->fetchColumn() !== 0;
+        return static::obtener($id) !== null;
+    }
+
+    public static function obtener(int $id, ?PDO $pdo = null): ?static
+    {
+        $pdo = $pdo ?? conectar();
+        $sent = $pdo->prepare('SELECT *
+                                 FROM articulos
+                                WHERE id = :id');
+        $sent->execute([':id' => $id]);
+        $fila = $sent->fetch(PDO::FETCH_ASSOC);
+        if ($fila === null) {
+            return null;
+        }
+        return new static($fila);
     }
 }

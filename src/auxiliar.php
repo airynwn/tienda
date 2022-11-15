@@ -31,13 +31,24 @@ function hh($x)
     return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
 }
 
-function volver() {
+function volver()
+{
     header("Location: /index.php");
 }
 
-function carrito() {
-    
+function carrito() //no entiendo lo del serialize aqui+index+insertar
+{ // crea un carrito por cada sesion nueva
+    if (!isset($_SESSION['carrito'])) {
+        $_SESSION['carrito'] = serialize(new Carrito());
+    } // y si ya existe lo devuelve
     return $_SESSION['carrito'];
+}
+
+function carrito_vacio()
+{
+    $carrito = unserialize(carrito());
+
+    return $carrito->vacio();
 }
 
 function insertar_error($campo, $mensaje, &$error)

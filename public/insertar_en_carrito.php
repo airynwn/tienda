@@ -16,5 +16,7 @@ try {
     $_SESSION['carrito'] = serialize($carrito);
 
 } catch (ValueError $e) {
-    //a
+    //todo alert con mensaje de error
 }
+
+volver();
