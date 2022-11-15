@@ -2,6 +2,11 @@
 
 class Carrito
 {
+    /**
+     * @var array $articulos los artículos del carrito
+     *                       las claves son los IDs
+     *                       los valores son las cantidades
+     */
     public $articulos;
     // propiedad dinamica: en psysh por ej
     // $c->pepe = 'hola';
@@ -46,17 +51,21 @@ class Carrito
         return $this->articulos;
     }
 
-    public function articulos(?PDO $pdo = null)//: array
-    {
+    public function articulos(?PDO $pdo = null): array
+    { // [ id => [articulo, cantidad] ]
+        // $ids = array_keys($this->articulos());
         $pdo = $pdo ?? conectar();
-        // $sent = $pdo->prepare('SELECT *
-        //                          FROM articulos
-        //                         WHERE id = :id');
-        // $sent->execute([':id' => $id]);
-        // $fila = $sent->fetch(PDO::FETCH_ASSOC);
-        // if ($fila === null) {
-        //     return null;
-        // }
-        // return new static($fila);
+        $marcadores = implode(',', array_fill(0, count($this->getArticulos()), '?'));
+        $sent = $pdo->prepare('SELECT * FROM articulos
+                                        WHERE id
+                                        in ($marcadores)');
+        $sent->execute(array_keys($this->getArticulos()));
+        $res = [];
+        foreach ($sent as $fila) {
+            $articulo = new Articulo($fila);
+            $id = $articulo->id;
+            $res[$id] = [$articulo, $this->getArticulos()[$id]];
+        }
+        return $res;
     }
 }
