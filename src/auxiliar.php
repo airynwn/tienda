@@ -1,6 +1,9 @@
 <?php
 
-require_once 'Carrito.php';
+spl_autoload_register(function ($class) {
+    require_once $class . '.php';
+});
+
 // Funciones
 
 /**
@@ -34,6 +37,11 @@ function hh($x)
 function volver()
 {
     header("Location: /index.php");
+}
+
+function volver_admin()
+{
+    header("Location: /admin/");
 }
 
 function carrito() //no entiendo lo del serialize aqui+index+insertar

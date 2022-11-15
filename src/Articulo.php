@@ -9,12 +9,12 @@ class Articulo
     public $descripcion;
     public $precio;
 
-    public function __construct($id, $codigo, $descripcion, $precio)
+    public function __construct(array $campos)
     {
-        $this->id = $id;
-        $this->codigo = $codigo;
-        $this->descripcion = $descripcion;
-        $this->precio = $precio;
+        $this->id = $campos['id'];
+        $this->codigo = $campos['codigo'];
+        $this->descripcion = $campos['descripcion'];
+        $this->precio = $campos['precio'];
     }
 
     public static function existe(int $id, ?PDO $pdo = null): bool

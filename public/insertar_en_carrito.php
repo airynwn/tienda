@@ -2,7 +2,6 @@
 
 session_start();
 
-require '../src/Carrito.php';
 require '../src/auxiliar.php';
 
 try {

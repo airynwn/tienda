@@ -12,9 +12,8 @@
 
 <body>
     <?php
-    require '../src/Carrito.php';
-    require_once '../src/auxiliar.php';
-
+    require_once '../src/auxiliar.php'; // carga el autoloader, que cargara  en todos
+    // hay que serializar para no meter objeto en una sesion
     $carrito = unserialize(carrito());
 
     $pdo = conectar();
@@ -22,8 +21,7 @@
     // en el link de añadir al carrito meter el id(?)
     // carrito = variable de sesion
     ?>
-
-    <div class="container mx-auto">
+<div class="container mx-auto">
         <div class="flex gap-2">
             <main class="grid grid-cols-4 gap-4 justify-center justify-items-center">
                 <?php foreach ($sent as $fila) : ?>
@@ -42,11 +40,11 @@
                 <?php endforeach ?>
             </main>
 
-            <?php if (!$carrito->vacio()) : ?>
+            <?php if (!$carrito->vacio()): ?>
                 <aside class="w-64" aria-label="Sidebar">
                     <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
                         <ul class="space-y-2">
-                            <?php foreach ($carrito->getArticulos() as $articulo => $cantidad) : ?>
+                            <?php foreach ($carrito->getArticulos() as $articulo => $cantidad): ?>
                                 <li>
                                     <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <span class="ml-3"><?= $articulo ?></span>

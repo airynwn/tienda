@@ -1,7 +1,5 @@
 <?php
 
-require_once 'Articulo.php';
-
 class Carrito
 {
     public $articulos;
@@ -46,5 +44,19 @@ class Carrito
     public function getArticulos(): array
     {
         return $this->articulos;
+    }
+
+    public function articulos(?PDO $pdo = null)//: array
+    {
+        $pdo = $pdo ?? conectar();
+        // $sent = $pdo->prepare('SELECT *
+        //                          FROM articulos
+        //                         WHERE id = :id');
+        // $sent->execute([':id' => $id]);
+        // $fila = $sent->fetch(PDO::FETCH_ASSOC);
+        // if ($fila === null) {
+        //     return null;
+        // }
+        // return new static($fila);
     }
 }
