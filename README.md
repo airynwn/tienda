@@ -137,8 +137,32 @@ Por cada incidencia que se esté trabajando, tras crear la rama, se creará su p
   7. Crear la carpeta `public/css/`
   8. `npm install -D flowbite`
   9. Crear la carpeta `public/js` y ejecutar `ln -s ../../node_modules/flowbite/dist flowbite`
-  10. **Iniciar CSS**: `npx tailwindcss -i ./src/input.css -o ./public/css/output.css --watch`
-  11. **Iniciar server:** `php -S 127.0.0.1:8000 -t public`
+  10. Añadir el siguiente contenido al fichero `tailwind.config.js`:
+      ```js
+      /** @type {import('tailwindcss').Config} */
+      module.exports = {
+        content: [
+          "./public/**/*.{html,php}",
+          "./node_modules/flowbite/**/*.js"    
+      ],
+        theme: {
+          extend: {},
+        },
+        plugins: [
+          require('flowbite/plugin')
+        ],
+      }
+      ```
+  11. Añadir arriba del title de los HTML con CSS:
+      ```html
+      <link href="/css/output.css" rel="stylesheet">
+      ```
+  12. Añadir justo antes del cierre del body de los HTML con CSS:
+      ```html
+      <script src="/js/flowbite/flowbite.js"></script>
+      ```
+  13. **Iniciar CSS**: `npx tailwindcss -i ./src/input.css -o ./public/css/output.css --watch`
+  14. **Iniciar server:** `php -S 127.0.0.1:8000 -t public`
 
 # Resumen
 
