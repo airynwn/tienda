@@ -13,7 +13,7 @@
 // php -S 127.0.0.1:8000 -t public
 // crear el src/input.css con el contenido que pone
 // crear carpeta public/css
-// npx tailwindcss -i ./src/input.css -o .public/css/output.css --watch
+// npx tailwindcss -i ./src/input.css -o ./public/css/output.css --watch
 // muchas cosas...
 // github.com/themesberg/flowbite -- flowbite.com
 // npm install -D flowbite

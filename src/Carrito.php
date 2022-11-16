@@ -51,15 +51,15 @@ class Carrito
         return $this->articulos;
     }
 
-    public function articulos(?PDO $pdo = null): array
+    public function articulos(?PDO $pdo = null)//: array
     { // [ id => [articulo, cantidad] ]
-        // $ids = array_keys($this->articulos());
         $pdo = $pdo ?? conectar();
+        //$ids = array_keys($this->getArticulos());
         $marcadores = implode(',', array_fill(0, count($this->getArticulos()), '?'));
-        $sent = $pdo->prepare('SELECT * FROM articulos
-                                        WHERE id
-                                        in ($marcadores)');
+        $sent = $pdo->prepare("SELECT * FROM articulos
+                                        WHERE id in ($marcadores)");
         $sent->execute(array_keys($this->getArticulos()));
+        // $sent->execute([':ids' => $ids]);
         $res = [];
         foreach ($sent as $fila) {
             $articulo = new Articulo($fila);
