@@ -25,4 +25,11 @@
 cd <public/js
 </ ln -s ../../node_modules/flowbite/dist flowbite
 
+
+17 11
+password_hash
+password_verify
+password_hash('pepe', PASSWORD_DEFAULT, ['cost' => 10]);
+
+
 */
