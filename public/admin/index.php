@@ -19,9 +19,7 @@
 
 <body>
     <?php
-    require '../../src/admin-auxiliar.php';
     require '../../src/auxiliar.php';
-
     $pdo = conectar();
     $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
     ?>

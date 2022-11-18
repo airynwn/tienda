@@ -1,4 +1,9 @@
 <?php
+
+spl_autoload_register(function ($class) {
+    require_once $class . '.php';
+});
+
 // Funciones
 
 /**
@@ -29,6 +34,31 @@ function hh($x)
     return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
 }
 
+function volver()
+{
+    header("Location: /index.php");
+}
+
+function volver_admin()
+{
+    header("Location: /admin/");
+}
+
+function carrito() //no entiendo lo del serialize aqui+index+insertar
+{ // crea un carrito por cada sesion nueva
+    if (!isset($_SESSION['carrito'])) {
+        $_SESSION['carrito'] = serialize(new Carrito());
+    } // y si ya existe lo devuelve
+    return $_SESSION['carrito'];
+}
+
+function carrito_vacio()
+{
+    $carrito = unserialize(carrito());
+
+    return $carrito->vacio();
+}
+
 function insertar_error($campo, $mensaje, &$error)
 {
     if (!isset($error[$campo])) {
@@ -36,6 +66,8 @@ function insertar_error($campo, $mensaje, &$error)
     }
     $error[$campo][] = $mensaje;
 }
+
+
 
 function validar_digitos($dig, $campo, &$error)
 {
