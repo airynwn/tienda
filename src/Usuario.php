@@ -13,7 +13,7 @@ class Usuario
         $this->password = $campos['password'];
     }
 
-    // refactorizar con rasgos
+    // refactorizar con rasgos (traits) , ver mejor
     public static function obtener(int $id, ?PDO $pdo = null): ?static
     {
         $pdo = $pdo ?? conectar();
