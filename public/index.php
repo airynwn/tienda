@@ -23,6 +23,7 @@
     ?>
     <div class="container mx-auto">
         <?php require '../src/_menu.php' ?>
+        <?php require '../src/_alert_compra.php' ?>
         <div class="flex">
             <main class="flex-1 grid grid-cols-3 gap-4 justify-center justify-items-center">
                 <?php foreach ($sent as $fila) : ?>
@@ -81,6 +82,53 @@
             <?php endif ?>
         </div>
     </div>
+
+    <?php
+    $sent = $pdo->query('SELECT descripcion, precio, sum(cantidad) AS suma
+                    FROM articulos a JOIN compras c
+                    ON a.id = c.producto_id
+                    GROUP BY descripcion, precio
+                    ORDER BY suma DESC');
+    ?>
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                Productos más solicitados
+                <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Aquí encontrarás una lista de nuestos productos más queridos por los clientes acompañados de su precio.</p>
+            </caption>
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="py-3 px-6">
+                        Producto
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Precio
+                    </th>
+                    <th scope="col" class="py-3 px-6">
+                        Número de compras totales
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($sent as $fila) : ?>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <?= hh($fila['descripcion']) ?>
+                        </th>
+                        <td class="py-4 px-6">
+                            <?= hh($fila['precio']) ?>
+
+                        </td>
+                        <td class="py-4 px-6">
+                            <?= hh($fila['suma']) ?>
+
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+
     <script src="/js/flowbite/flowbite.js"></script>
 </body>
 

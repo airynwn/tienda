@@ -23,7 +23,7 @@
     $pdo = conectar();
 
     if (isset($values)) { //si vengo de mi mismo...
-        echo $values;
+        $alert = true;
         $values = substr($values, 0, strlen($values) - 1);
         $sent = $pdo->query('INSERT INTO compras
                         (usuario_id, producto_id, cantidad, fecha_compra)
@@ -31,6 +31,7 @@
 
 
         unset($_SESSION['carrito']);
+        $_SESSION['compra'] = 'Compra realizada con éxito.';
         return volver();
         // sacar los id de las compras cuyo timestamp sea now (?)
     }
