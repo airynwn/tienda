@@ -15,7 +15,7 @@
     $userid = unserialize($_SESSION['login'])->id;
     
     $pdo = conectar();
-    $sent = $pdo->query('SELECT nombre, descripcion, precio, sum(cantidad) AS suma
+    $sent = $pdo->prepare('SELECT nombre, descripcion, precio, sum(cantidad) AS suma
                             FROM categorias c JOIN articulos a
                             ON c.id = a.categoria_id
                             JOIN compras b
@@ -26,11 +26,13 @@
                                 ON c.id = a.categoria_id
                                 JOIN compras b
                                 ON b.producto_id = a.id
+                                WHERE usuario_id = :userid
                                 ORDER BY fecha_compra DESC
                                 LIMIT 1)
                             GROUP BY nombre, descripcion, precio
                             ORDER BY suma DESC
                             LIMIT 2');
+    $sent->execute([':userid' => $userid]);
     // Categoría, Producto y Precio cuya categoría sea la misma que la del último producto comprado.
     // Cosas a cambiar: El último producto comprado es random si la última vez se compró más de un producto
     
