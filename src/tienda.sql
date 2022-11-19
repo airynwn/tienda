@@ -15,6 +15,17 @@ CREATE TABLE usuarios (
     password    varchar(255)    NOT NULL
 );
 
+DROP TABLE IF EXISTS compras CASCADE;
+
+CREATE TABLE compras (
+    id              bigserial       PRIMARY KEY,
+    usuario_id      bigint          NOT NULL,
+    producto_id     bigint          NOT NULL,
+    cantidad        bigint          NOT NULL,
+    fecha_compra    timestamp       NOT NULL
+);
+
+
 -- Carga inicial de datos de prueba:
 
 INSERT INTO articulos (codigo, descripcion, precio)
