@@ -4,6 +4,9 @@ require_once 'auxiliar.php';
 
 class Articulo
 {
+    use Obtenible;
+    // coge lo que hay dentro del trait y lo mete aqui
+    protected static string $tabla = 'articulos';
     public $id;
     public $codigo;
     public $descripcion;
@@ -25,8 +28,9 @@ class Articulo
     public static function obtener(int $id, ?PDO $pdo = null): ?static
     {
         $pdo = $pdo ?? conectar();
+        $tabla = static::$tabla;
         $sent = $pdo->prepare('SELECT *
-                                 FROM articulos
+                                 FROM $tabla
                                 WHERE id = :id');
         $sent->execute([':id' => $id]);
         $fila = $sent->fetch(PDO::FETCH_ASSOC);

@@ -2,9 +2,9 @@
 
 class Usuario
 {
+    protected static string $tabla = 'usuarios';
     public $id;
     public $usuario;
-    public $password;
 
     public function __construct(array $campos)
     {
@@ -16,6 +16,7 @@ class Usuario
         return $this->usuario == 'admin';
     }
     // refactorizar con rasgos (traits) , ver mejor
+    // traits: como interfaces pero tienen codigo
     public static function obtener(int $id, ?PDO $pdo = null): ?static
     {
         $pdo = $pdo ?? conectar();
