@@ -2,39 +2,35 @@
 
 class Carrito
 {
-    /**
-     * @var array $articulos los artículos del carrito
-     *                       las claves son los IDs
-     *                       los valores son las cantidades
-     */
-    public $articulos;
+    private array $lineas;
     // propiedad dinamica: en psysh por ej
     // $c->pepe = 'hola';
     // propiedades predeterminadas: las que estan definidas en el archivo (estas)
     public function __construct()
     { // crea lista de articulos para meter [id=>cantidad]
-        $this->articulos = [];
+        $this->lineas = [];
     }
 
     public function insertar($id)
     {
-        if (!Articulo::existe($id)) { // :: operador de resolucion de ambito - busca el
+        if (!($articulo = Articulo::obtener($id))) { // :: operador de resolucion de ambito - busca el
             throw new ValueError('El artículo no existe.');
         } // metodo estatico existe() de la clase articulo
         // Si ya está el artículo en el carrito le suma 1
-        if (isset($this->articulos[$id])) {
-            $this->articulos[$id]++;
+        if (isset($this->lineas[$id])) {
+            $this->lineas[$id]->incrCantidad();
         } else { // sino mete el primero
-            $this->articulos[$id] = 1;
+            $linea = new Linea($articulo, 1);
+            $this->lineas[$id]->setCantidad(1);
         }
     }
 
     public function eliminar($id)
     {
-        if (isset($this->articulos[$id])) {
-            $this->articulos[$id]--; // Si ya está en el carrito le resta 1
-            if ($this->articulos[$id] == 0) {
-                unset($this->articulos[$id]); // y si quedan 0, lo quita
+        if (isset($this->lineas[$id])) {
+            $this->lineas[$id]->decrCantidad(); // Si ya está en el carrito le resta 1
+            if ($this->lineas[$id]->getCantidad() == 0) {
+                unset($this->lineas[$id]); // y si quedan 0, lo quita
             }
         } else {
             throw new ValueError('Artículo inexistente en el carrito');
@@ -43,29 +39,11 @@ class Carrito
 
     public function vacio(): bool
     {
-        return empty($this->articulos);
+        return empty($this->lineas);
     }
 
-    public function getArticulos(): array
+    public function getLineas(): array
     {
-        return $this->articulos;
-    }
-
-    public function articulos(?PDO $pdo = null)//: array
-    { // [ id => [articulo, cantidad] ]
-        $pdo = $pdo ?? conectar();
-        //$ids = array_keys($this->getArticulos());
-        $marcadores = implode(',', array_fill(0, count($this->getArticulos()), '?'));
-        $sent = $pdo->prepare("SELECT * FROM articulos
-                                        WHERE id in ($marcadores)");
-        $sent->execute(array_keys($this->getArticulos()));
-        // $sent->execute([':ids' => $ids]);
-        $res = [];
-        foreach ($sent as $fila) {
-            $articulo = new Articulo($fila);
-            $id = $articulo->id;
-            $res[$id] = [$articulo, $this->getArticulos()[$id]];
-        }
-        return $res;
+        return $this->lineas;
     }
 }

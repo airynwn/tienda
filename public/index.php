@@ -23,6 +23,9 @@
     <div class="container mx-auto">
         <?php require '../src/_menu.php' ?>
         <?php require '../src/_alerts.php' ?>
+        <div class="container mx-auto">
+        <?php require '../src/_menu.php' ?>
+        <?php require '../src/_alerts.php' ?>
         <div class="flex">
             <main class="flex-1 grid grid-cols-3 gap-4 justify-center justify-items-center">
                 <?php foreach ($sent as $fila) : ?>
@@ -50,8 +53,11 @@
                                 <th scope="col" class="py-3 px-6">Cantidad</th>
                             </thead>
                             <tbody>
-                                <?php foreach ($carrito->articulos() as $id => $pareja) : ?>
-                                    <?php [$articulo, $cantidad] = $pareja ?>
+                                <?php foreach ($carrito->getLineas() as $id => $linea): ?>
+                                    <?php
+                                    $articulo = $linea->getArticulo();
+                                    $cantidad = $linea->getCantidad();
+                                    ?>
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td class="py-4 px-6"><?= $articulo->descripcion ?></td>
                                         <td class="py-4 px-6 text-center"><?= $cantidad ?></td>
