@@ -10,9 +10,11 @@ class Usuario
     {
         $this->id = $campos['id'];
         $this->usuario = $campos['usuario'];
-        $this->password = $campos['password'];
     }
-
+    public function es_admin(): bool
+    {
+        return $this->usuario == 'admin';
+    }
     // refactorizar con rasgos (traits) , ver mejor
     public static function obtener(int $id, ?PDO $pdo = null): ?static
     {
@@ -33,7 +35,7 @@ class Usuario
 
     public static function logueado(): ?static
     {
-        return isset($_SESSION['login']) ? $_SESSION['login'] : null;
+        return isset($_SESSION['login']) ? unserialize($_SESSION['login']) : null;
     }
     
     public static function comprobar($login, $password, ?PDO $pdo = null)

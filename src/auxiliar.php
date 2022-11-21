@@ -44,7 +44,12 @@ function volver_admin()
     header("Location: /admin/");
 }
 
-function carrito() //no entiendo lo del serialize aqui+index+insertar
+function redirigir_login()
+{
+    header('Location: /login.php');
+}
+
+function carrito()
 { // crea un carrito por cada sesion nueva
     if (!isset($_SESSION['carrito'])) {
         $_SESSION['carrito'] = serialize(new Carrito());
