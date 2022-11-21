@@ -18,7 +18,7 @@
     $error = [];
     validar_codigo($codigo, $error);
     validar_digitos($descripcion, 'descripcion', $error);
-    validar_longitud()
+    // validar_longitud()
 
     // TODO
     // validar el codigo
