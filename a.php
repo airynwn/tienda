@@ -1,4 +1,6 @@
 <?php
+// npm run watch
+
 //          tailwindcss.com/docs/installation
 //          sudo apt install npm 
 // dentro del directorio del proyecto (raiz):
@@ -31,6 +33,15 @@ ln -s ../../node_modules/flowbite/dist flowbite
 password_hash
 password_verify
 password_hash('pepe', PASSWORD_DEFAULT, ['cost' => 10]);
+
+
+
+
+
+22 nov
+namespaces
+nombre corto: Articulo
+FQN: Tablas\Articulo
 
 
 */
