@@ -18,7 +18,8 @@
 
     $pdo = conectar();
     $sent = $pdo->query("SELECT * FROM articulos ORDER BY codigo");
-
+    // insertar:
+    // insert into facturas (usuario_id) values (2) returning id;
     ?>
     <div class="container mx-auto">
         <?php require '../src/_menu.php' ?>

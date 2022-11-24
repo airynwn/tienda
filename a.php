@@ -44,4 +44,20 @@ nombre corto: Articulo
 FQN: Tablas\Articulo
 
 
+24 nov
+instalar composer
+sudo apt install composer
+packagist -> mpdf
+composer require mpdf/mpdf
+gitignore vendor
+sustituira utoload
+
+
+
+
+
+
+
+
+
 */
