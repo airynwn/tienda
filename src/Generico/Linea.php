@@ -1,6 +1,10 @@
 <?php
 
-class Linea
+namespace App\Generico;
+
+use App\Tablas\Articulo;
+
+class Linea extends Modelo
 {
     private Articulo $articulo;
     private int $cantidad;

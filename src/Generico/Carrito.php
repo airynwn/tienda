@@ -1,6 +1,11 @@
 <?php
 
-class Carrito
+namespace App\Generico;
+
+use App\Tablas\Articulo;
+use ValueError;
+
+class Carrito extends Modelo
 {
     private array $lineas;
     // propiedad dinamica: en psysh por ej
@@ -20,8 +25,7 @@ class Carrito
         if (isset($this->lineas[$id])) {
             $this->lineas[$id]->incrCantidad();
         } else { // sino mete el primero
-            $linea = new Linea($articulo, 1);
-            $this->lineas[$id]->setCantidad(1);
+            $this->lineas[$id] = new Linea($articulo);
         }
     }
 

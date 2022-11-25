@@ -1,6 +1,10 @@
 <?php
 
-class Usuario
+namespace App\Tablas;
+
+use PDO;
+
+class Usuario extends Modelo
 {
     protected static string $tabla = 'usuarios';
     public $id;
@@ -8,6 +12,7 @@ class Usuario
 
     public function __construct(array $campos)
     {
+        $this->tabla = '$usuarios';
         $this->id = $campos['id'];
         $this->usuario = $campos['usuario'];
     }
@@ -15,20 +20,7 @@ class Usuario
     {
         return $this->usuario == 'admin';
     }
-    // refactorizar con rasgos (traits) , ver mejor
-    // traits: como interfaces pero tienen codigo
-    public static function obtener(int $id, ?PDO $pdo = null): ?static
-    {
-        $pdo = $pdo ?? conectar();
-        $sent = $pdo->prepare('SELECT *
-                                 FROM usuarios
-                                WHERE id = :id');
-        $sent->execute([':id' => $id]);
-        $fila = $sent->fetch(PDO::FETCH_ASSOC);
-
-        return $fila ? new static($fila) : null;
-    }
-
+    
     public static function esta_logueado(): bool
     {
         return isset($_SESSION['login']);
