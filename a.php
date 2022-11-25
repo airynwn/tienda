@@ -45,12 +45,14 @@ FQN: Tablas\Articulo
 
 
 24 nov
-instalar composer
-sudo apt install composer
-packagist -> mpdf
+cosas para hacer: cambiar todo para que use autoloader, lo de lineas, facturas etc
+dependency insert: insert noseque... returning id (o lo que sea) para coger el id y meterlo en la otra
+instalar composer:
+sudo apt install composer (una vez para siempre)
+packagist -> mpdf (para generar pdf) en el proyecto:
 composer require mpdf/mpdf
-gitignore vendor
-sustituira utoload
+.gitignore: vendor
+sustituir autoload y usar el de composer (mucho lio)
 
 
 
