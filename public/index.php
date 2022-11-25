@@ -14,6 +14,10 @@
     <?php
     require_once '../src/auxiliar.php'; // carga el autoloader, que cargara  en todos
     // hay que serializar para no meter objeto en una sesion (carrito=var de sesion)
+
+    $mpdf = new \Mpdf\Mpdf();
+    
+    
     $carrito = unserialize(carrito());
 
     $pdo = conectar();
