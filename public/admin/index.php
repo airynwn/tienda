@@ -21,7 +21,7 @@
     <?php
     require '../../src/auxiliar.php';
 
-    if ($usuario = Usuario::logueado()) {
+    if ($usuario = App\Tablas\Usuario::logueado()) {
         if (!$usuario->es_admin()) {
             $_SESSION['error'] = 'Acceso no autorizado.';
             return volver();

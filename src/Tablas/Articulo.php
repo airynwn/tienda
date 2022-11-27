@@ -6,7 +6,6 @@ use PDO;
 
 class Articulo extends Modelo
 {
-    // coge lo que hay dentro del trait y lo mete aqui
     protected static string $tabla = 'articulos';
 
     public $id;
@@ -25,5 +24,20 @@ class Articulo extends Modelo
     public static function existe(int $id, ?PDO $pdo = null): bool
     {
         return static::obtener($id, $pdo) !== null;
+    }
+
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function getPrecio()
+    {
+        return $this->precio;
     }
 }

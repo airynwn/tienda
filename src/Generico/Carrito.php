@@ -20,7 +20,7 @@ class Carrito extends Modelo
     {
         if (!($articulo = Articulo::obtener($id))) { // :: operador de resolucion de ambito - busca el
             throw new ValueError('El artículo no existe.');
-        } // metodo estatico existe() de la clase articulo
+        } // metodo estatico obtener() de la clase articulo
         // Si ya está el artículo en el carrito le suma 1
         if (isset($this->lineas[$id])) {
             $this->lineas[$id]->incrCantidad();

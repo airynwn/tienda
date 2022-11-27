@@ -12,7 +12,7 @@ require '../vendor/autoload.php';
  */
 function conectar()
 {
-    return new PDO('pgsql:host=localhost;dbname=tienda', 'tienda', 'tienda');
+    return new \PDO('pgsql:host=localhost;dbname=tienda', 'tienda', 'tienda');
 }
 
 function obtener_parametro($par, $array)
@@ -35,6 +35,11 @@ function hh($x)
     return htmlspecialchars($x ?? '', ENT_QUOTES | ENT_SUBSTITUTE);
 }
 
+function dinero($s)
+{
+    return number_format($s, 2, ',', ' ') . ' €';
+}
+
 function volver()
 {
     header("Location: /index.php");
@@ -53,7 +58,7 @@ function redirigir_login()
 function carrito()
 { // crea un carrito por cada sesion nueva
     if (!isset($_SESSION['carrito'])) {
-        $_SESSION['carrito'] = serialize(new Carrito());
+        $_SESSION['carrito'] = serialize(new \App\Generico\Carrito());
     } // y si ya existe lo devuelve
     return $_SESSION['carrito'];
 }
