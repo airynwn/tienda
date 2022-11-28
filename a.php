@@ -54,6 +54,10 @@ composer require mpdf/mpdf
 .gitignore: vendor
 sustituir autoload y usar el de composer (mucho lio)
 
+clonado: composer install
+npm install
+composer dump-autoload
+composer require squizlabs/php_codesniffer --dev
 
 
 
