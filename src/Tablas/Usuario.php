@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Tablas;
 
 use PDO;
@@ -7,20 +6,22 @@ use PDO;
 class Usuario extends Modelo
 {
     protected static string $tabla = 'usuarios';
+
     public $id;
     public $usuario;
 
     public function __construct(array $campos)
     {
-        $this->tabla = '$usuarios';
+        $this->tabla = 'usuarios';
         $this->id = $campos['id'];
         $this->usuario = $campos['usuario'];
     }
+
     public function es_admin(): bool
     {
         return $this->usuario == 'admin';
     }
-    
+
     public static function esta_logueado(): bool
     {
         return isset($_SESSION['login']);
@@ -30,7 +31,7 @@ class Usuario extends Modelo
     {
         return isset($_SESSION['login']) ? unserialize($_SESSION['login']) : null;
     }
-    
+
     public static function comprobar($login, $password, ?PDO $pdo = null)
     {
         $pdo = $pdo ?? conectar();
