@@ -50,4 +50,17 @@ class Usuario extends Modelo
             ? new static($fila)
             : false;
     }
+
+    public static function existe($login, ?PDO $pdo = null)
+    {
+        $pdo = $pdo ?? conectar();
+
+        $sent = $pdo->prepare('SELECT *
+                                 FROM usuarios
+                                WHERE usuario = :login');
+        $sent->execute([':login' => $login]);
+        $fila = $sent->fetch(PDO::FETCH_ASSOC);
+
+        return $fila === false ? false : true;
+    }
 }
