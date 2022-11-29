@@ -3,7 +3,8 @@
 // spl_autoload_register(function ($class) {
 //     require_once $class . '.php';
 // });
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+// he tenido que añadir __DIR__ . '/ (...) para que vaya
 
 // Funciones
 
