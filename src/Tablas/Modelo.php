@@ -26,7 +26,7 @@ class Modelo
         array $execute = [],
         ?PDO $pdo = null
     ): array
-    {
+    { // hace select con los param mandados y devuelve las filas
         $pdo = $pdo ?? conectar();
         $tabla = static::$tabla;
         $where = !empty($where)
