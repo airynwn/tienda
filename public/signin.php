@@ -22,7 +22,7 @@
     $clases_input = '';
     $error = false;
 
-    // Funciona pero está feo el código + mejorar $error?
+    // Mejorable
     
     if (isset($login) && isset($password)) {
         if ($password != $password2) {
@@ -40,7 +40,7 @@
         <?php
         $error = true;
         }
-        if (strlen($login) < 1) {
+        if ($login == '') {
             // El usuario no puede estar vacío
             ?>
             <div class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
@@ -55,7 +55,7 @@
         <?php
         $error = true;
         }
-        if (strlen($password) < 1) {
+        if ($password == '') {
             // La contraseña no puede estar vacía
             ?>
             <div class="flex p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
@@ -74,10 +74,7 @@
             if (!$error) {
             // Si pw1=pw2, no existe un usuario con ese nombre,
             // el login y la contraseña no son vacíos (no hay errores); lo crea.
-            $pdo = conectar();
-            $sent = $pdo->prepare('INSERT INTO usuarios (usuario, password)
-                    VALUES (:usuario, crypt(:password, gen_salt(\'bf\', 10)))');
-            $sent->execute([':usuario' => $login, ':password' => $password]);
+            \App\Tablas\Usuario::registrar($login, $password, $pdo);
         ?>
             <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
                 <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

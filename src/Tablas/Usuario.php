@@ -51,16 +51,23 @@ class Usuario extends Modelo
             : false;
     }
 
-    public static function existe($login, ?PDO $pdo = null)
+    public static function existe($login, ?PDO $pdo = null): bool
     {
-        $pdo = $pdo ?? conectar();
+        return $login == '' ? false :
+            !empty(static::todos(
+                ['usuario = :usuario'],
+                [':usuario' => $login],
+                $pdo
+            ));
+    }
 
-        $sent = $pdo->prepare('SELECT *
-                                 FROM usuarios
-                                WHERE usuario = :login');
-        $sent->execute([':login' => $login]);
-        $fila = $sent->fetch(PDO::FETCH_ASSOC);
-
-        return $fila === false ? false : true;
+    public static function registrar($login, $password, ?PDO $pdo = null)
+    {
+        $sent = $pdo->prepare('INSERT INTO usuarios (usuario, password)
+                               VALUES (:login, :password)');
+        $sent->execute([
+            ':login' => $login,
+            ':password' => password_hash($password, PASSWORD_DEFAULT),  //!
+        ]);
     }
 }
